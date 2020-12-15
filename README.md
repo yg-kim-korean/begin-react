@@ -1,4 +1,16 @@
-리액트생명주기 - 출처:http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+벨로퍼트와 함께하는 모던 리액트 - 강의 실습
+
+
+https://react.vlpt.us/
+
+
+react_start -> 리액트 입문
+
+
+               리액트생명주기 - 출처:http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+               
+               
+react_styling_with_sass -> 리액트 
 
 # Getting Started with Create React App
 
