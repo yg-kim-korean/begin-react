@@ -1,3 +1,5 @@
+리액트생명주기 - 출처:http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
