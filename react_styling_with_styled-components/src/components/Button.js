@@ -2,56 +2,52 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { darken, lighten } from 'polished';
 
-const colorStyles= css`
-${({theme, color}) => {
+const colorStyles = css`
+  ${({ theme, color }) => {
     const selected = theme.palette[color];
     return css`
       background: ${selected};
       &:hover {
-          background: ${lighten(0.1, selected)};
+        background: ${lighten(0.1, selected)};
       }
       &:active {
-          background: ${darken(0.1, selected)};
+        background: ${darken(0.1, selected)};
       }
-      ${props=>
+      ${props =>
         props.outline &&
         css`
-            color:${selected};
-            background: none;
-            border: 1px solid ${selected};
-            &:hover{
-                background: ${selected};
-                color:white;
-            }
-        `    
-    
-    }
-
-      `;
-}}
+          color: ${selected};
+          background: none;
+          border: 1px solid ${selected};
+          &:hover {
+            background: ${selected};
+            color: white;
+          }
+        `}
+    `;
+  }}
 `;
 
-const sizes={
-    large:{
-        height:'3rem',
-        fontSize: '1.25rem'
-    },
-    medium:{
-        height:'2.25rem',
-        fontSize: '1rem'
-    },
-    small:{
-        height:'1.75rem',
-        fontSize: '0.875rem'
-    }
-}
+const sizes = {
+  large: {
+    height: '3rem',
+    fontSize: '1.25rem'
+  },
+  medium: {
+    height: '2.25rem',
+    fontSize: '1rem'
+  },
+  small: {
+    height: '1.75rem',
+    fontSize: '0.875rem'
+  }
+};
 
 const sizeStyles = css`
-    ${({size}) => css`
-    height:${sizes[size].height};
-    font-size:${sizes[size].fontSize};
-    `
-    }
+  ${({ size }) => css`
+    height: ${sizes[size].height};
+    font-size: ${sizes[size].fontSize};
+  `}
 `;
 
 const fullWidthStyle = css`
@@ -89,13 +85,24 @@ const StyledButton = styled.button`
   & + & {
     margin-left: 1rem;
   }
+
   ${fullWidthStyle}
 `;
 
 
 
-function Button({ children, color, size,fullWidth ,...rest }) {
-  return <StyledButton color = {color} size={size} {...rest} fullWidth={fullWidth}>{children}</StyledButton>;
+
+function Button({ children, color, size,outline ,fullWidth ,...rest }) {
+  
+  return <StyledButton 
+            color = {color} 
+            size={size} 
+            {...rest} 
+            outline={outline}
+            fullWidth={fullWidth}
+            >
+                {children}
+          </StyledButton>;
 }
 
 Button.defaultProps ={

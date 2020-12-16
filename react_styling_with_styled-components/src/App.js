@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled, {css, ThemeProvider} from 'styled-components';
 import Button from './components/Button'
-
+import Dialog from './components/Dialog'
 // const Circle = styled.div`
 // width: 5rem;
 // height: 5rem;
@@ -25,13 +25,26 @@ padding: 1rem;
 `;
 
 const ButtonGroup = styled.div`
- &+&{
-   margin-top:1rem;
+ & + &{
+   margin-top: 1rem;
  }
 `
 
 
 function App() {
+  const [dialog,setDialog] = useState(false);
+  
+  const onClick=() => {
+    setDialog(true);
+  };
+  const onConfirm = () =>{
+    console.log('확인');
+    setDialog(false);
+  };
+  const onCancel =() =>{
+    console.log('취소');
+    setDialog(false)
+  }
   return (
     <ThemeProvider 
     theme={{
@@ -42,6 +55,7 @@ function App() {
       }
     }}
     >
+      <>
     {/* <Circle color = 'red' huge /> */}
     <AppBlock>
       <ButtonGroup>
@@ -71,11 +85,22 @@ function App() {
           <Button size="large" color="gray" fullWidth>
             BUTTON
           </Button>
-          <Button size="large" color="pink" fullWidth>
-            BUTTON
+          <Button size="large" color="pink" fullWidth onClick={onClick}>
+            삭제
           </Button>
         </ButtonGroup>
     </AppBlock>
+    <Dialog
+      title="정말로 삭제하시겠습니까?"
+      confirmText="삭제"
+      cancelText="취소"
+      onConfirm={onConfirm}
+      onCancel={onCancel}
+      visible={dialog}
+      >
+        데이터를 정말로 삭제하시겠습니까?
+      </Dialog>
+      </>
     </ThemeProvider>
   );
 }
