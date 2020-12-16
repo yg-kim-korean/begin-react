@@ -1,19 +1,3 @@
-벨로퍼트와 함께하는 모던 리액트 - 강의 실습
-
-https://react.vlpt.us/
-
-react_start -> 리액트 입문
-
-               리액트생명주기 - 출처:http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
-
--스타일링
-react_styling_with_sass -> sass 활용
-react_styling_with_css-module -> css-module 활용
-react_styling_with_styled-components -> styled-components 활용
-
--실습 to do list 만들기
-react_exercise_make-todolist -> react-icons styled-components 활용
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
