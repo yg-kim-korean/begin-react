@@ -3,9 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import './exercise'
-ReactDOM.render(
+import { createStore } from 'redux';
+import rootReducer from './modules/Index';
+//스토어 만들기
+const store = createStore(rootReducer);
+console.log(store.getState());
 
+ReactDOM.render(
     <App />
 ,
   document.getElementById('root')
