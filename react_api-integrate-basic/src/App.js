@@ -1,9 +1,12 @@
 import React from 'react'
 import './App.css';
 import Users from './Users'
+import {UesrsProvider} from './UsersContext';
 function App() {
   return (
-    <Users />
+    <UesrsProvider>
+      <Users />
+    </UesrsProvider>
   );
 }
 

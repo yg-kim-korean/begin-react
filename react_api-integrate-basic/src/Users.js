@@ -3,15 +3,16 @@ import axios from 'axios';
 // import useAsync from './useAsync';
 import {useAsync} from 'react-async';
 import User from './User';
+import { useUsersDispatch, useUsersState, getUsers } from './UsersContext';
 
 //useAsync 에서는 Promise의 결과를 바로 Data에 담기때문에
 // 요청을 한 이후 reponse에서 data를 추출하여 반환하는 함수를 따로 생성
-async function getUsers(){
-    const response = await axios.get(
-        'https://jsonplaceholder.typicode.com/users'
-    );
-    return response.data
-}
+// async function getUsers(){
+//     const response = await axios.get(
+//         'https://jsonplaceholder.typicode.com/users'
+//     );
+//     return response.data
+// }
 
 export default function Users() {
     // const [users, setUsers] = useState(null);
@@ -36,15 +37,23 @@ export default function Users() {
     // };
     const [userId, setUserId] = useState(null);
     // const [state, refetch] = useAsync(getUsers,[],true);
-    const {data, error,isLoading, run} = useAsync({
-        promiseFn : getUsers
-    })
-
-    
-
-    if (isLoading) return <div>로딩중...</div>
+    const state = useUsersState();
+    const dispatch = useUsersDispatch();
+    // const {data, error,isLoading, run} = useAsync({
+    //     promiseFn : getUsers
+    // })
+    //------context 사용
+    const {data, loading,error}  = state.users;
+    const fetchData = () => {
+        getUsers(dispatch);
+    };
+    //-----
+    // if (isLoading) return <div>로딩중...</div>
+    // if (error) return <div>에러가 발생했습니다.</div>
+    // if (!data) return <button onClick={run}>불러오기</button>;
+    if (loading) return <div>로딩중...</div>
     if (error) return <div>에러가 발생했습니다.</div>
-    if (!data) return <button onClick={run}>불러오기</button>;
+    if (!data) return <button onClick={fetchData}>불러오기</button>;
     return (
         <>
             <ul>
@@ -58,7 +67,7 @@ export default function Users() {
                     </li>
                 ))}
             </ul>
-            <button onClick={run}>다시 불러오기</button>
+            <button onClick={fetchData}>다시 불러오기</button>
             {userId && <User id={userId} />}
         </>
     );
