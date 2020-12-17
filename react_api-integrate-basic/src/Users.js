@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios';
-import useAsync from './useAsync';
+// import useAsync from './useAsync';
+import {useAsync} from 'react-async';
 import User from './User';
 
 //useAsync 에서는 Promise의 결과를 바로 Data에 담기때문에
@@ -34,13 +35,16 @@ export default function Users() {
     //     setLoading(false);
     // };
     const [userId, setUserId] = useState(null);
-    const [state, refetch] = useAsync(getUsers,[],true);
+    // const [state, refetch] = useAsync(getUsers,[],true);
+    const {data, error,isLoading, run} = useAsync({
+        promiseFn : getUsers
+    })
 
-    const {loading, data, error} = state;
+    
 
-    if (loading) return <div>로딩중...</div>
+    if (isLoading) return <div>로딩중...</div>
     if (error) return <div>에러가 발생했습니다.</div>
-    if (!data) return <button onClick={refetch}>불러오기</button>;
+    if (!data) return <button onClick={run}>불러오기</button>;
     return (
         <>
             <ul>
@@ -54,7 +58,7 @@ export default function Users() {
                     </li>
                 ))}
             </ul>
-            <button onClick={refetch}>다시 불러오기</button>
+            <button onClick={run}>다시 불러오기</button>
             {userId && <User id={userId} />}
         </>
     );
