@@ -1,7 +1,7 @@
 import React from 'react'
 
 const profileData ={
-    valopert:{
+    velopert:{
         name: 'yg',
         description:'dddd'
     },
