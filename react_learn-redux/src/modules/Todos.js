@@ -1,9 +1,7 @@
-import React from 'react'
-
 const ADD_TODO = 'todos/ADD_TODO';
 const TOGGLE_TODO = 'todos/TOGGLE_TODO';
 
-let nextId = 1;
+let nextId = 5;
 export const addTodo = text => ({
     type: ADD_TODO,
     todo: {
@@ -17,7 +15,26 @@ export const toggleTOdo = id => ({
 });
 
 const initialState = [
-
+    {
+        id: 1,
+        text: '예시',
+        done: true
+    },
+    {
+        id: 2,
+        text: 'asd',
+        done: true
+    },
+    {
+        id: 3,
+        text: 'qwevrg',
+        done: false
+    },
+    {
+        id: 4,
+        text: 'hhtijhwer',
+        done: false
+    },
 ];
 
 export default function Todos(state = initialState, action) {
