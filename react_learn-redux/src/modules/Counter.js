@@ -1,5 +1,3 @@
-import React from 'react'
-
 //액션타입 만들기
 
 //Ducks 패턴을 따른땐 액션의 이름에 접두사 넣기

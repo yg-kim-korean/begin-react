@@ -5,12 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createStore } from 'redux';
 import rootReducer from './modules/Index';
+import {Provider} from 'react-redux'
 //스토어 만들기
 const store = createStore(rootReducer);
 console.log(store.getState());
 
 ReactDOM.render(
+  <Provider store = {store}>
     <App />
+  </Provider>
 ,
   document.getElementById('root')
 );
