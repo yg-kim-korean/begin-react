@@ -4,7 +4,8 @@ const DECREASE = 'DECREASE';
 export const increase = () => ({type:INCREASE});
 export const decrease = () => ({type:DECREASE});
 
-const initialState=0;
+const initialState =0;
+
 export default function counter(state= initialState, action) {
     switch(action.type){
         case INCREASE:
