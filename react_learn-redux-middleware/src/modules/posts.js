@@ -1,5 +1,5 @@
 import * as postsAPI from '../api/posts';
-import { createPromiseThunk, handleAsyncActions, reducerUtils } from '../lib/asyncUtils';
+import { createPromiseThunk, createPromiseThunkById, handleAsyncActions, handleAsyncActionsById, reducerUtils } from '../lib/asyncUtils';
 
 /* 액션 타입 */
 // 포스트 여러개 조회하기
@@ -43,10 +43,11 @@ const CLEAR_POST = 'CLEAR_POST';
 
 //'../lib/asyncUtils'; 생성후 리팩토링
 export const getPosts = createPromiseThunk(GET_POSTS, postsAPI.getPosts);
-export const getPost = createPromiseThunk(GET_POST, postsAPI.getPostById);
+export const getPost = createPromiseThunkById(GET_POST, postsAPI.getPostById);
 
 
-export const clearPost =  () => ({type:CLEAR_POST});
+// export const clearPost =  () => ({type:CLEAR_POST});
+
 const initialState = {
     // posts:{
     //     loading:false,
@@ -59,7 +60,8 @@ const initialState = {
     //     error: null
     // }
     posts: reducerUtils.initial(),
-    post : reducerUtils.initial()
+    // post : reducerUtils.initial()
+    post : {}
 }
 
 export default function posts(state = initialState, action) {
@@ -107,12 +109,12 @@ export default function posts(state = initialState, action) {
         case GET_POST:
         case GET_POST_SUCCESS:
         case GET_POST_ERROR:
-            return handleAsyncActions(GET_POST, 'post')(state, action);
-        case CLEAR_POST:
-            return {
-                ...state,
-                post: reducerUtils.initial()
-            }
+            return handleAsyncActionsById(GET_POST, 'post', true)(state, action);
+        // case CLEAR_POST:
+        //     return {
+        //         ...state,
+        //         post: reducerUtils.initial()
+        //     }
         default:
             return state;
     }
