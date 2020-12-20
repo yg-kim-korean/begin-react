@@ -26,13 +26,13 @@ const posts = [
 export const getPosts = async () =>{
     // await sleep(500); //0.5초 쉬고
     // return posts; //posts 배열
-    const response = await axios.get('http://localhost:4000/posts');
+    const response = await axios.get('/posts');
     return response.data;
 }
 //ID로 포스트를 조회하는 비동기 함수
 export const getPostById = async (id) => {
     // await sleep(500);
     // return posts.find(post => post.id === id);
-    const response = await axios.get(`http://localhost:4000/posts/${id}`);
+    const response = await axios.get(`/posts/${id}`);
     return response.data;
 }
