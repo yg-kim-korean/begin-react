@@ -17,9 +17,8 @@ const customHistory = createBrowserHistory();
 const store = createStore(rootReducer,
   composeWithDevTools(
     applyMiddleware(
-      ReduxThunk.withExtraArgument({history:customHistory}),
-      logger
-      )));
+      ReduxThunk)
+      ));
 
 ReactDOM.render(
   <Router history={customHistory}>

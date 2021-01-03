@@ -7,7 +7,7 @@ function PostListContainer() {
     const dispatch = useDispatch();
     //컴포넌트 마운트 후 포스트 목록 요청
     useEffect(()=>{
-        
+
         dispatch(getPosts());
     },[dispatch])
 
@@ -20,4 +20,3 @@ function PostListContainer() {
 }
 
 export default PostListContainer
-

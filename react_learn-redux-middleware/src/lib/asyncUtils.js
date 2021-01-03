@@ -16,7 +16,7 @@ export const createPromiseThunk = (type, promiseCreator) => {
         catch(error) {
             dispatch({ tYpe: ERROR, payload:error, error:true})
         }
-    }   
+    }
 }
 
 //리듀서에서 사용할 수 있는 여러 유틸함수 들 입니다.

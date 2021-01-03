@@ -4,7 +4,7 @@ import Post from '../components/Post';
 import { clearPost, getPost, goToHome } from '../modules/posts';
 
 function PostContainer({postId}) {
-    const {data,loading, error} = useSelector(state=>state.posts.post[postId]) 
+    const {data,loading, error} = useSelector(state=>state.posts.post[postId])
     || {
         loading:false,
         data: null,
@@ -21,11 +21,11 @@ function PostContainer({postId}) {
     if (!data ) return null;
     return (
         <>
-            <button onClick={()=> dispatch(goToHome())}>홈으로 이동</button>
+            
             <Post post={data} />
         </>
     )
-    
+
 }
 
 export default PostContainer

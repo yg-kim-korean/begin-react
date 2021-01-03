@@ -75,7 +75,7 @@ export default function posts(state = initialState, action) {
     //         return {
     //             ...state,
     //             posts: reducerUtils.success(action.payload)
-                
+
     //         };
     //     case GET_POSTS_ERROR:
     //         return {
@@ -98,7 +98,7 @@ export default function posts(state = initialState, action) {
     //             post: reducerUtils.error(action.error)
     //         };
     //     default:
-    //         return state;   
+    //         return state;
     // }
     // 리팩토링
     switch(action.type){
@@ -120,7 +120,7 @@ export default function posts(state = initialState, action) {
     }
 }
 
-//3번째 인자를 사용하면 withExtraArgument에서 넣어준 값들을 사용할 수있다.
-export const goToHome = () => (dispatch, getState,{history}) =>{
-    history.push('/');
-};
+// //3번째 인자를 사용하면 withExtraArgument에서 넣어준 값들을 사용할 수있다.
+// export const goToHome = () => (dispatch, getState,{history}) =>{
+//     history.push('/');
+// };
